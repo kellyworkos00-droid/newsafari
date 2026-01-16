@@ -25,7 +25,7 @@ export interface Booking {
   created_at: string;
   booking_date: string;
   tour_title?: string;
-  tour_location?: string;
+  tour_destination?: string;
   tour?: any;
 }
 

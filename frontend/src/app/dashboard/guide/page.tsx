@@ -9,7 +9,7 @@ import { tourService } from '@/lib/tours';
 interface Tour {
   id: number;
   title: string;
-  location: string;
+  destination: string;
   price_per_person: number;
   bookings_count: number;
   is_active: boolean;
@@ -125,7 +125,7 @@ export default function GuideDashboard() {
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="text-lg font-bold text-gray-900">{tour.title}</h3>
-                          <p className="text-gray-600 text-sm">{tour.location}</p>
+                          <p className="text-gray-600 text-sm">{tour.destination}</p>
                         </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           tour.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'

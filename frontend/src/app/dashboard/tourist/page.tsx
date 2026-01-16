@@ -129,7 +129,7 @@ export default function TouristDashboard() {
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="text-lg font-bold text-gray-900">{booking.tour_title}</h3>
-                          <p className="text-gray-600 text-sm">{booking.tour_location}</p>
+                          <p className="text-gray-600 text-sm">{booking.tour_destination}</p>
                         </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           booking.booking_status === 'confirmed' ? 'bg-green-100 text-green-700' :
