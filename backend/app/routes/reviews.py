@@ -99,7 +99,7 @@ def get_provider_reviews(provider_id: int, skip: int = 0, limit: int = 20, db: S
 def get_provider_review_stats(provider_id: int, db: Session = Depends(get_db)):
     """Get review statistics for a provider"""
     
-    from sqlalchemy import func
+    from sqlalchemy import func, case
     
     stats = db.query(
         func.count(Review.id).label("total_reviews"),
