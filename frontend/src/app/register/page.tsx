@@ -4,12 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authService } from '@/lib/auth';
-
-type UserRole = 'tourist' | 'guide' | 'company';
+import { UserRole } from '@/types/auth';
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [role, setRole] = useState<UserRole>('tourist');
+  const [role, setRole] = useState<UserRole>(UserRole.TOURIST);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -71,14 +70,14 @@ export default function RegisterPage() {
             <label className="block text-sm font-semibold text-gray-700 mb-3">I am a...</label>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { value: 'tourist', label: 'Tourist', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
-                { value: 'guide', label: 'Tour Guide', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-                { value: 'company', label: 'Company', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' }
+                { value: UserRole.TOURIST, label: 'Tourist', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+                { value: UserRole.GUIDE, label: 'Tour Guide', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+                { value: UserRole.COMPANY, label: 'Company', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' }
               ].map((option) => (
                 <button
                   key={option.value}
                   type="button"
-                  onClick={() => setRole(option.value as UserRole)}
+                  onClick={() => setRole(option.value)}
                   className={`p-4 rounded-xl border-2 transition-all ${
                     role === option.value
                       ? 'border-green-600 bg-green-50 text-green-700'
