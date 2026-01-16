@@ -11,10 +11,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
+# CORS middleware - Support multiple origins for development and production
+allowed_origins = settings.get_allowed_origins()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

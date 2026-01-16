@@ -16,8 +16,12 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
-    # CORS
+    # CORS - Support multiple origins for development and production
     FRONTEND_URL: str = "http://localhost:3000"
+    ALLOWED_ORIGINS: str = "http://localhost:3000"  # Comma-separated list
+    
+    # Backend URL (for M-PESA callbacks)
+    BACKEND_URL: str = "http://localhost:8000"
     
     # M-PESA
     MPESA_CONSUMER_KEY: str = ""
@@ -31,6 +35,11 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
     SMTP_USER: str = ""
     SMTP_PASSWORD: str = ""
+    
+    def get_allowed_origins(self):
+        """Parse comma-separated origins into a list"""
+        origins = self.ALLOWED_ORIGINS.split(",")
+        return [origin.strip() for origin in origins if origin.strip()]
     
     class Config:
         env_file = str(ENV_FILE)
