@@ -23,6 +23,9 @@ export interface Booking {
   customer_email?: string;
   customer_phone?: string;
   created_at: string;
+  booking_date: string;
+  tour_title?: string;
+  tour_location?: string;
   tour?: any;
 }
 
