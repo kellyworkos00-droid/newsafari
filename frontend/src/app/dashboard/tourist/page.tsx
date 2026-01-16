@@ -4,19 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authService } from '@/lib/auth';
-import { bookingService } from '@/lib/bookings';
-
-interface Booking {
-  id: number;
-  tour_title: string;
-  tour_location: string;
-  number_of_people: number;
-  total_amount: number;
-  booking_status: string;
-  payment_status: string;
-  booking_reference: string;
-  booking_date: string;
-}
+import { bookingService, Booking } from '@/lib/bookings';
 
 export default function TouristDashboard() {
   const router = useRouter();
